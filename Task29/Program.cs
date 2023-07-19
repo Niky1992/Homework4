@@ -2,17 +2,18 @@
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
-{
-    int size = 8;
-    int[] array = new int[8];
-    Random myRandom = new Random();
-    Console.WriteLine("Вводим массмв");
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = myRandom.Next(0,100);
-        Console.Write("{0}", array[i]);
-        Console.Write(", ");
-    
-    }
+System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+Console.Clear();
 
+
+
+int[] MakeRandomArray(int size)
+{
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
+        array[i] = new Random().Next(100); 
+    return array;
 }
+
+int[] array = MakeRandomArray(new Random().Next(8,8));
+Console.WriteLine("[" + string.Join(", ", array) + "]");
